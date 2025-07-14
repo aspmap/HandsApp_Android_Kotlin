@@ -1,0 +1,130 @@
+package run.itlife.handsapp
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import com.mikepenz.materialdrawer.AccountHeader
+import com.mikepenz.materialdrawer.AccountHeaderBuilder
+import com.mikepenz.materialdrawer.Drawer
+import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+import run.itlife.handsapp.databinding.ActivityMainBinding
+import run.itlife.handsapp.ui.DialogsFragment
+import run.itlife.handsapp.ui.PostsFragment
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var mBinding: ActivityMainBinding
+    private lateinit var mDrawer: Drawer
+    private lateinit var mHeader: AccountHeader
+    private lateinit var mToolbar: Toolbar
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initFields()
+        initFunc()
+    }
+
+    private fun initFunc() {
+        setSupportActionBar(mToolbar)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.dataContainer, PostsFragment()).commit()
+        createHeader()
+        createDrawer()
+    }
+
+    private fun createDrawer() {
+        mDrawer = DrawerBuilder()
+            .withActivity(this)
+            .withToolbar(mToolbar)
+            .withActionBarDrawerToggle(true)
+            .withSelectedItem(-1)
+            .withAccountHeader(mHeader)
+            .addDrawerItems(
+                PrimaryDrawerItem().withIdentifier(100)
+                    .withIconTintingEnabled(true)
+                    .withName("Посты")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_create_channel),
+                PrimaryDrawerItem().withIdentifier(110)
+                    .withIconTintingEnabled(true)
+                    .withName("Создать пост")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_invate),
+                PrimaryDrawerItem().withIdentifier(120)
+                    .withIconTintingEnabled(true)
+                    .withName("Моя страница")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_contacts),
+                PrimaryDrawerItem().withIdentifier(130)
+                    .withIconTintingEnabled(true)
+                    .withName("Мой профиль")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_settings),
+                PrimaryDrawerItem().withIdentifier(140)
+                    .withIconTintingEnabled(true)
+                    .withName("Мои лайки")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_favorites),
+                PrimaryDrawerItem().withIdentifier(150)
+                    .withIconTintingEnabled(true)
+                    .withName("Мои диалоги")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_create_channel),
+                PrimaryDrawerItem().withIdentifier(160)
+                    .withIconTintingEnabled(true)
+                    .withName("Мой вишлист")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_favorites),
+                PrimaryDrawerItem().withIdentifier(170)
+                    .withIconTintingEnabled(true)
+                    .withName("Мой QR-код")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_secret_chat),
+                DividerDrawerItem(),
+                PrimaryDrawerItem().withIdentifier(180)
+                    .withIconTintingEnabled(true)
+                    .withName("Выйти")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_header_night)
+            ).withOnDrawerItemClickListener(object: Drawer.OnDrawerItemClickListener {
+                override fun onItemClick(
+                    view: View?,
+                    position: Int,
+                    drawerItem: IDrawerItem<*>
+                ): Boolean {
+                    when(position) {
+                        6 -> supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.dataContainer, DialogsFragment()).commit()
+                    }
+                    return false
+                }
+            }).build()
+    }
+
+    private fun createHeader() {
+        mHeader = AccountHeaderBuilder()
+            .withActivity(this)
+            .withHeaderBackground(R.drawable.header)
+            .addProfiles(
+                ProfileDrawerItem().withName("Павлов Александр")
+                    .withEmail("aspmap@yandex.ru")
+            ).build()
+    }
+
+    private fun initFields() {
+        mToolbar = mBinding.mainToolbar
+    }
+}

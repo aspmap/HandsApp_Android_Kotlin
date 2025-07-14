@@ -1,0 +1,51 @@
+.gradle
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/captures
+.externalNativeBuild
+.cxx
+
+# Built application files
+*.apk
+*.aab
+*.obb
+
+# Files for the Dalvik cache
+/app/build/
+/build/
+
+# External libraries
+/libs/
+
+# IDE files
+.idea/
+*.iml
+*.hprof
+.gradle/
+/local.properties
+
+# Logs
+*.log
+
+# Google Services (if not using Firebase)
+google-services.json
+
+# Keystore files
+keystore.jks
+
+# Various IntelliJ IDEA files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/shelf/
+
+# Android Studio generated files
+.DS_Store
+**/src/debug/
+**/src/release/
+**/src/androidTest/
+**/src/test/

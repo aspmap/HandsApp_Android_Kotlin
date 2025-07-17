@@ -1,1 +1,69 @@
 /build
+# Built application files
+*.apk
+*.aab
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+build/
+.gradle/
+.idea/
+local.properties
+.project
+.classpath
+.settings/
+*.iml
+*.iws
+.navigation/
+
+# IDE
+.idea/workspace.xml
+.idea/libraries/
+.idea/dictionaries/
+.idea/modules.xml
+.idea/gradle.xml
+.idea/caches/
+.idea/compiler.xml
+.idea/artifacts/
+.idea/modules.xml
+
+# Gradle
+.gradle/
+gradle/wrapper/dists/
+
+# Log files
+*.log
+
+# Android
+.externalNativeBuild/
+app/build/
+app/.externalNativeBuild/
+
+# Keystores
+*.jks
+*.keystore
+
+# Temporary files
+*~
+*.tmp
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Debug files
+debug/
+
+# Assets (only if not needed)
+app/src/main/assets/

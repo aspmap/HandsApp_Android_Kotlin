@@ -13,6 +13,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import run.itlife.handsapp.R
 import run.itlife.handsapp.ui.fragments.DialogsFragment
+import run.itlife.handsapp.ui.fragments.ProfileFragment
 
 class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
     private lateinit var mDrawer: Drawer
@@ -33,7 +34,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
             .addDrawerItems(
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
-                    .withName("Посты")
+                    .withName("Моя лента")
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_menu_create_channel),
                 PrimaryDrawerItem().withIdentifier(110)
@@ -84,10 +85,10 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when(position) {
-                        6 -> mainActivity.supportFragmentManager.beginTransaction()
+                        4 -> mainActivity.supportFragmentManager.beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.dataContainer,
-                                DialogsFragment()
+                                ProfileFragment()
                             ).commit()
                     }
                     return false

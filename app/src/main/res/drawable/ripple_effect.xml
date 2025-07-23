@@ -7,5 +7,4 @@
             <corners android:radius="@dimen/settings_ripple_effect_radius" />
         </shape>
     </item>
-
 </ripple>

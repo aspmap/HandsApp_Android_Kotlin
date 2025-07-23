@@ -24,7 +24,9 @@
             android:layout_marginStart="@dimen/horizontal_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
 
         <TextView
             android:id="@+id/settings_username"
@@ -67,10 +69,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_change_number_phone"
+        style="@style/setting_buttons"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settings_text_account"
-        style="@style/setting_buttons">
+        app:layout_constraintTop_toBottomOf="@id/settings_text_account">
 
         <TextView
             android:id="@+id/settings_phone_number"
@@ -96,10 +101,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_change_login"
+        style="@style/setting_buttons"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settings_btn_change_number_phone"
-        style="@style/setting_buttons">
+        app:layout_constraintTop_toBottomOf="@id/settings_btn_change_number_phone">
 
         <TextView
             android:id="@+id/settings_login"
@@ -125,10 +133,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_change_bio"
+        style="@style/setting_buttons"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settings_btn_change_login"
-        style="@style/setting_buttons">
+        app:layout_constraintTop_toBottomOf="@id/settings_btn_change_login">
 
         <TextView
             android:id="@+id/settings_bio"

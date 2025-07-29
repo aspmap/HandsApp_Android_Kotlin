@@ -14,6 +14,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import run.itlife.handsapp.R
 import run.itlife.handsapp.ui.fragments.DialogsFragment
 import run.itlife.handsapp.ui.fragments.ProfileFragment
+import run.itlife.handsapp.utils.replaceFragment
 
 class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
     private lateinit var mDrawer: Drawer
@@ -85,11 +86,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when(position) {
-                        4 -> mainActivity.supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.dataContainer,
-                                ProfileFragment()
-                            ).commit()
+                        4 -> mainActivity.replaceFragment(ProfileFragment())
                     }
                     return false
                 }

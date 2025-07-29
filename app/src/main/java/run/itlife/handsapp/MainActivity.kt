@@ -6,8 +6,11 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.databinding.ActivityMainBinding
+import run.itlife.handsapp.ui.fragments.DialogsFragment
 import run.itlife.handsapp.ui.fragments.PostsFragment
 import run.itlife.handsapp.ui.objects.AppDrawer
+import run.itlife.handsapp.utils.replaceActivity
+import run.itlife.handsapp.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,17 +31,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
-        if (false) {
+        if (true) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.dataContainer,
-                    PostsFragment()
-                ).commit()
+            replaceFragment(DialogsFragment())
         } else {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            replaceActivity(RegisterActivity())
         }
 
     }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100726854",
+    "project_id": "handsapp-6ccbe",
+    "storage_bucket": "handsapp-6ccbe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100726854:android:6ec081c5e790a6b1db3247",
+        "android_client_info": {
+          "package_name": "run.itlife.handsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA26ZmUbDecXe-gtpl2LXR4uqTWss60qHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

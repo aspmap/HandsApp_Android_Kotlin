@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "run.itlife.handsapp"
-        minSdkVersion 21
+        minSdkVersion 29
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 29
         versionCode 1
@@ -47,4 +47,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation platform('com.google.firebase:firebase-bom:34.0.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
 }

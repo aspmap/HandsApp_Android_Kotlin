@@ -1,14 +1,14 @@
 package run.itlife.handsapp
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.auth.FirebaseAuth
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.databinding.ActivityMainBinding
 import run.itlife.handsapp.ui.fragments.DialogsFragment
-import run.itlife.handsapp.ui.fragments.PostsFragment
 import run.itlife.handsapp.ui.objects.AppDrawer
+import run.itlife.handsapp.utils.AUTH
 import run.itlife.handsapp.utils.replaceActivity
 import run.itlife.handsapp.utils.replaceFragment
 
@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mAppDrawer: AppDrawer
     private lateinit var mToolbar: Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
-        if (true) {
+        if (AUTH.currentUser != null) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            replaceFragment(DialogsFragment())
+            replaceFragment(DialogsFragment(), false)
         } else {
             replaceActivity(RegisterActivity())
         }
@@ -45,5 +46,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
+        AUTH = FirebaseAuth.getInstance()
     }
 }

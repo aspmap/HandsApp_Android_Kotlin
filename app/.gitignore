@@ -67,3 +67,5 @@ debug/
 
 # Assets (only if not needed)
 app/src/main/assets/
+
+google-services.json

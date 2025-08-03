@@ -13,7 +13,6 @@
 # Generated files
 bin/
 build/
-.gradle/
 .idea/
 local.properties
 .project
@@ -32,7 +31,6 @@ local.properties
 .idea/caches/
 .idea/compiler.xml
 .idea/artifacts/
-.idea/modules.xml
 
 # Gradle
 .gradle/

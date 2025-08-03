@@ -84,6 +84,7 @@
         <item name="android:padding">@dimen/appPadding</item>
         <item name="android:inputType">phone</item>
         <item name="android:maxLines">1</item>
+        <item name="android:textColorHint">@color/colorGrey</item>
     </style>
 
 </resources>

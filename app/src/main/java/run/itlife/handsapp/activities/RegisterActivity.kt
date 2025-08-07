@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import run.itlife.handsapp.R
 import run.itlife.handsapp.databinding.ActivityRegisterBinding
 import run.itlife.handsapp.ui.fragments.EnterPhoneNumberFragment
+import run.itlife.handsapp.utils.initFirebase
 import run.itlife.handsapp.utils.replaceFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        initFirebase()
     }
 
     override fun onStart() {

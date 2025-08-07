@@ -9,6 +9,7 @@ import run.itlife.handsapp.databinding.ActivityMainBinding
 import run.itlife.handsapp.ui.fragments.DialogsFragment
 import run.itlife.handsapp.ui.objects.AppDrawer
 import run.itlife.handsapp.utils.AUTH
+import run.itlife.handsapp.utils.initFirebase
 import run.itlife.handsapp.utils.replaceActivity
 import run.itlife.handsapp.utils.replaceFragment
 
@@ -46,6 +47,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
-        AUTH = FirebaseAuth.getInstance()
+        initFirebase()
     }
 }

@@ -21,7 +21,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when(item.itemId) {  // TODO В основном меню тоже сделать выход
             R.id.settings_menu_change_exit -> {
                 AUTH.signOut()
                 (activity as MainActivity).replaceActivity(RegisterActivity())

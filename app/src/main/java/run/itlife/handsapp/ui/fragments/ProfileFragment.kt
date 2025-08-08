@@ -8,6 +8,7 @@ import run.itlife.handsapp.R
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.utils.AUTH
 import run.itlife.handsapp.utils.replaceActivity
+import run.itlife.handsapp.utils.replaceFragment
 
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
@@ -26,6 +27,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
                 AUTH.signOut()
                 (activity as MainActivity).replaceActivity(RegisterActivity())
             }
+            R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())
         }
         return true
     }

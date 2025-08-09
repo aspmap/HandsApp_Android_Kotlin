@@ -98,7 +98,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     .withIconTintingEnabled(true)
                     .withName("Выход")
                     .withSelectable(false)
-                    .withIcon(R.drawable.ic_header_night)
+                    .withIcon(R.drawable.ic_btn_action_menu_exit)
             ).withOnDrawerItemClickListener(object: Drawer.OnDrawerItemClickListener {
                 override fun onItemClick(
                     view: View?,

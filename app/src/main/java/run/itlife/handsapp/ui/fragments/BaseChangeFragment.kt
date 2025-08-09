@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import run.itlife.handsapp.MainActivity
 import run.itlife.handsapp.R
+import run.itlife.handsapp.utils.APP_ACTIVITY
 
 open class BaseChangeFragment (layout: Int) : Fragment(layout) {
 
@@ -17,6 +18,7 @@ open class BaseChangeFragment (layout: Int) : Fragment(layout) {
 
     override fun onStop() {
         super.onStop()
+        APP_ACTIVITY.hideKeyboard()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

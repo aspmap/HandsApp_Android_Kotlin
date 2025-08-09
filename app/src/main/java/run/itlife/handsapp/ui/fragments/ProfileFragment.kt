@@ -4,13 +4,9 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.fragment_profile.*
-import run.itlife.handsapp.MainActivity
 import run.itlife.handsapp.R
 import run.itlife.handsapp.activities.RegisterActivity
-import run.itlife.handsapp.utils.AUTH
-import run.itlife.handsapp.utils.USER
-import run.itlife.handsapp.utils.replaceActivity
-import run.itlife.handsapp.utils.replaceFragment
+import run.itlife.handsapp.utils.*
 
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
@@ -28,7 +24,16 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         settings_username.text = USER.username
         settings_btn_change_username.setOnClickListener { replaceFragment(ChangeUsernameFragment()) }
         settings_btn_change_bio.setOnClickListener { replaceFragment(ChangeBioFragment()) }
+        //settings_change_photo.setOnClickListener { changePhotoUser() }
     }
+
+/*    private fun changePhotoUser() {
+        CropImage.activity()
+            .setAceptRatio(1, 1)
+            .setRequestedSize(600, 600)
+            .setCropShape(CropImageView.CropShape.OVAL)
+            .start(APP_ACTIVITY)
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.settings_action_menu, menu)
@@ -38,7 +43,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         when(item.itemId) {  // TODO В основном меню тоже сделать выход
             R.id.settings_menu_change_exit -> {
                 AUTH.signOut()
-                (activity as MainActivity).replaceActivity(RegisterActivity())
+                APP_ACTIVITY.replaceActivity(RegisterActivity())
             }
             R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())
         }

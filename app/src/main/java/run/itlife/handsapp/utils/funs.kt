@@ -45,5 +45,12 @@ fun Fragment.replaceFragment(fragment: Fragment) {
 fun hideKeyboard() {
     val imm: InputMethodManager = APP_ACTIVITY.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(APP_ACTIVITY.window.decorView.windowToken, 0)
-
 }
+
+/*
+fun CircleImageView.downloadAndSetImage(url: String) {
+    Picasso.get()
+        .load(url)
+        .placeholder(R.drawable.default_photo)
+        .into(this)
+}*/

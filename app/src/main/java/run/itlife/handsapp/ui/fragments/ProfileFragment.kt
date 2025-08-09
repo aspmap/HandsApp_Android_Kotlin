@@ -51,7 +51,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         return true
     }
 
-    /*    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+/*    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
             && resultCode == RESULT_OK && data != null) {
@@ -66,6 +66,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
                                 .child(CHILD_PHOTO_URL).setValue(photoUrl)
                                 .addOnCompleteListener {
                                     if (it.isSuccessful) {
+                                        settings_user_photo.downloadAndSetImage(photoUrl)
                                         showToast(getString(R.string.toast_data_update))
                                         USER.photoUrl = photoUrl
                                     }

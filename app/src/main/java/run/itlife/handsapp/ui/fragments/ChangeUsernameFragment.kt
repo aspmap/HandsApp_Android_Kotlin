@@ -33,7 +33,7 @@ class ChangeUsernameFragment : BaseFragment(R.layout.fragment_change_username) {
     private fun change() {
         mNewUsername = settings_input_username.text.toString().toLowerCase(Locale.getDefault())
         if (mNewUsername.isEmpty()) {
-            showToast(getString(R.string.name_is_not_empty))
+            showToast(getString(R.string.settings_toast_username_is_empty))
         } else {
             REF_DATABASE_ROOT.child(NODE_USERNAMES)
                 .addListenerForSingleValueEvent(AppValueEventListener {

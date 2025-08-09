@@ -4,14 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.databinding.ActivityMainBinding
+import run.itlife.handsapp.models.User
 import run.itlife.handsapp.ui.fragments.DialogsFragment
 import run.itlife.handsapp.ui.objects.AppDrawer
-import run.itlife.handsapp.utils.AUTH
-import run.itlife.handsapp.utils.initFirebase
-import run.itlife.handsapp.utils.replaceActivity
-import run.itlife.handsapp.utils.replaceFragment
+import run.itlife.handsapp.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,5 +49,14 @@ class MainActivity : AppCompatActivity() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
         initFirebase()
+        initUser()
+    }
+
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID).addListenerForSingleValueEvent(
+        AppValueEventListener {
+            USER = it.getValue(User::class.java) ?:User()
+        }
+        )
     }
 }

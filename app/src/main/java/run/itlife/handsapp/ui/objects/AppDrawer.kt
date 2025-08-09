@@ -53,7 +53,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
             .withSelectedItem(-1)
             .withAccountHeader(mHeader)
             .addDrawerItems(
-                PrimaryDrawerItem().withIdentifier(100)
+                /*PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
                     .withName("Моя лента")
                     .withSelectable(false)
@@ -67,13 +67,13 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     .withIconTintingEnabled(true)
                     .withName("Моя страница")
                     .withSelectable(false)
-                    .withIcon(R.drawable.ic_menu_contacts),
+                    .withIcon(R.drawable.ic_menu_contacts),*/
                 PrimaryDrawerItem().withIdentifier(130)
                     .withIconTintingEnabled(true)
                     .withName("Мой профиль")
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_menu_settings),
-                PrimaryDrawerItem().withIdentifier(140)
+                /*PrimaryDrawerItem().withIdentifier(140)
                     .withIconTintingEnabled(true)
                     .withName("Мои лайки")
                     .withSelectable(false)
@@ -92,11 +92,11 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     .withIconTintingEnabled(true)
                     .withName("Мой QR-код")
                     .withSelectable(false)
-                    .withIcon(R.drawable.ic_menu_secret_chat),
+                    .withIcon(R.drawable.ic_menu_secret_chat),*/
                 DividerDrawerItem(),
                 PrimaryDrawerItem().withIdentifier(180)
                     .withIconTintingEnabled(true)
-                    .withName("Выйти")
+                    .withName("Выход")
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_header_night)
             ).withOnDrawerItemClickListener(object: Drawer.OnDrawerItemClickListener {
@@ -106,7 +106,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when(position) {
-                        4 -> mainActivity.replaceFragment(ProfileFragment())
+                        1 -> mainActivity.replaceFragment(ProfileFragment())
                     }
                     return false
                 }

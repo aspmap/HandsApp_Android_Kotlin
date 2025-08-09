@@ -26,6 +26,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         settings_phone_number.text = USER.phone
         settings_status.text = USER.status
         settings_username.text = USER.username
+        settings_btn_change_username.setOnClickListener { replaceFragment(ChangeUsernameFragment()) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

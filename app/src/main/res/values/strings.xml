@@ -24,4 +24,7 @@
     <string name="toast_data_update">Данные обновлены</string>
     <string name="settings_default_username">Александр Павлов</string>
     <string name="settings_default_status">в сети</string>
+    <string name="settings_hint_input_username">Имя пользователя</string>
+    <string name="username_exists">Такой пользователь уже существует. Введите другое имя пользователя</string>
+    <string name="name_is_not_empty">Имя пользователя не может быть пустым</string>
 </resources>

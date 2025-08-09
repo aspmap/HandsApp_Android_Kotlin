@@ -3,10 +3,12 @@ package run.itlife.handsapp.ui.fragments
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.fragment_profile.*
 import run.itlife.handsapp.MainActivity
 import run.itlife.handsapp.R
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.utils.AUTH
+import run.itlife.handsapp.utils.USER
 import run.itlife.handsapp.utils.replaceActivity
 import run.itlife.handsapp.utils.replaceFragment
 
@@ -15,6 +17,15 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        initFields()
+    }
+
+    private fun initFields() {
+        settings_bio.text = USER.bio
+        settings_full_name.text = USER.fullname
+        settings_phone_number.text = USER.phone
+        settings_status.text = USER.status
+        settings_username.text = USER.username
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

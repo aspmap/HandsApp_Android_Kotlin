@@ -9,7 +9,7 @@ import run.itlife.handsapp.MainActivity
 import run.itlife.handsapp.R
 import run.itlife.handsapp.utils.*
 
-class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
+class ChangeNameFragment : BaseFragment(R.layout.fragment_change_name) {
 
     override fun onResume() {
         super.onResume()

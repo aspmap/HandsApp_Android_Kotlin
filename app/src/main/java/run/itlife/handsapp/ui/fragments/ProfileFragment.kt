@@ -25,6 +25,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         settings_btn_change_username.setOnClickListener { replaceFragment(ChangeUsernameFragment()) }
         settings_btn_change_bio.setOnClickListener { replaceFragment(ChangeBioFragment()) }
         //settings_change_photo.setOnClickListener { changePhotoUser() }
+        settings_change_photo.setOnClickListener { showToast(getString(R.string.info_photo_profile)) }
     }
 
 /*    private fun changePhotoUser() {

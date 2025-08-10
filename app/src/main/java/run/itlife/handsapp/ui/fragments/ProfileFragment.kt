@@ -45,6 +45,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         when(item.itemId) {  // TODO В основном меню тоже сделать выход
             R.id.settings_menu_change_exit -> {
                 AUTH.signOut()
+                AppStates.updateState(AppStates.OFFLINE)
                 APP_ACTIVITY.replaceActivity(RegisterActivity())
             }
             R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())

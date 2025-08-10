@@ -1,8 +1,10 @@
 package run.itlife.handsapp
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.databinding.ActivityMainBinding
 import run.itlife.handsapp.ui.fragments.DialogsFragment
@@ -22,8 +24,15 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser {
+            initContacts()
             initFields()
             initFunc()
+        }
+    }
+
+    private fun initContacts() {
+        if (checkPermission(READ_CONTACTS)) {
+            showToast("Чтение контактов")
         }
     }
 
@@ -51,5 +60,16 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         AppStates.updateState(AppStates.OFFLINE)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (ContextCompat.checkSelfPermission(APP_ACTIVITY, READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+            initContacts()
+        }
     }
 }

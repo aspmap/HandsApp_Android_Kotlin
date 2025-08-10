@@ -34,6 +34,5 @@ open class BaseChangeFragment (layout: Int) : Fragment(layout) {
     }
 
     open fun change() {
-
     }
 }

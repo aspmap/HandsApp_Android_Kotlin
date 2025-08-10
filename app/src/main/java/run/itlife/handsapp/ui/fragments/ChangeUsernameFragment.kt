@@ -44,6 +44,7 @@ class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_usern
             .setValue(mNewUsername)
             .addOnCompleteListener {
             if (it.isSuccessful) {
+                hideKeyboard()
                 showToast(getString(R.string.toast_data_update))
                 deleteOldUsername()
             } else {

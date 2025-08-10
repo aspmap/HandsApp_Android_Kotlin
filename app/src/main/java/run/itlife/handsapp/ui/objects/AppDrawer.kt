@@ -1,9 +1,6 @@
 package run.itlife.handsapp.ui.objects
 
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -11,18 +8,17 @@ import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
-import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
-import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
-import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import run.itlife.handsapp.R
+import run.itlife.handsapp.ui.fragments.ContactsFragment
 import run.itlife.handsapp.ui.fragments.ProfileFragment
+import run.itlife.handsapp.utils.APP_ACTIVITY
 import run.itlife.handsapp.utils.USER
 import run.itlife.handsapp.utils.replaceFragment
 
-class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
+class AppDrawer {
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
     private lateinit var mDrawerLayout: DrawerLayout
@@ -37,30 +33,35 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
 
     fun disableDrawer() {
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
-        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        toolbar.setNavigationOnClickListener {
-            mainActivity.supportFragmentManager.popBackStack()
+        APP_ACTIVITY.mToolbar.setNavigationOnClickListener {
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
         }
     }
 
     fun enableDrawer() {
-        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-        toolbar.setNavigationOnClickListener {
+        APP_ACTIVITY.mToolbar.setNavigationOnClickListener {
             mDrawer.openDrawer()
         }
     }
 
     private fun createDrawer() {
         mDrawer = DrawerBuilder()
-            .withActivity(mainActivity)
-            .withToolbar(toolbar)
+            .withActivity(APP_ACTIVITY)
+            .withToolbar(APP_ACTIVITY.mToolbar)
             .withActionBarDrawerToggle(true)
             .withSelectedItem(-1)
             .withAccountHeader(mHeader)
             .addDrawerItems(
+                PrimaryDrawerItem().withIdentifier(100)
+                    .withIconTintingEnabled(true)
+                    .withName("Мои контакты")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_contacts),
                 /*PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
                     .withName("Моя лента")
@@ -80,7 +81,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     .withIconTintingEnabled(true)
                     .withName("Мой профиль")
                     .withSelectable(false)
-                    .withIcon(R.drawable.ic_menu_settings),
+                    .withIcon(R.drawable.ic_menu_settings)
                 /*PrimaryDrawerItem().withIdentifier(140)
                     .withIconTintingEnabled(true)
                     .withName("Мои лайки")
@@ -101,24 +102,29 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     .withName("Мой QR-код")
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_menu_secret_chat),*/
-                DividerDrawerItem(),
+                /*DividerDrawerItem(),
                 PrimaryDrawerItem().withIdentifier(180)
                     .withIconTintingEnabled(true)
                     .withName("Выход")
                     .withSelectable(false)
-                    .withIcon(R.drawable.ic_btn_action_menu_exit)
+                    .withIcon(R.drawable.ic_btn_action_menu_exit)*/
             ).withOnDrawerItemClickListener(object: Drawer.OnDrawerItemClickListener {
                 override fun onItemClick(
                     view: View?,
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    when(position) {
-                        1 -> mainActivity.replaceFragment(ProfileFragment())
-                    }
+                    clickToItem(position)
                     return false
                 }
             }).build()
+    }
+
+    private fun clickToItem(position: Int) {
+        when(position) {
+            1 -> APP_ACTIVITY.replaceFragment(ContactsFragment())
+            2 -> APP_ACTIVITY.replaceFragment(ProfileFragment())
+        }
     }
 
     private fun createHeader() {
@@ -128,7 +134,7 @@ class AppDrawer (val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
             //.withIcon(USER.photoUrl)
             .withIdentifier(200)
         mHeader = AccountHeaderBuilder()
-            .withActivity(mainActivity)
+            .withActivity(APP_ACTIVITY)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
                 mCurrentProfile

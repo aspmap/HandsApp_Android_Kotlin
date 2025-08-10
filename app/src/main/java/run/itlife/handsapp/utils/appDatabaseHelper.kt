@@ -1,13 +1,16 @@
 package run.itlife.handsapp.utils
 
+import android.provider.ContactsContract
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import run.itlife.handsapp.models.CommonModel
 import run.itlife.handsapp.models.User
 
 lateinit var AUTH: FirebaseAuth
 lateinit var CURRENT_UID: String
 lateinit var REF_DATABASE_ROOT: DatabaseReference
+
 //lateinit var REF_STORAGE_ROOT: StorageReference
 lateinit var USER: User
 
@@ -21,6 +24,7 @@ const val CHILD_PHONE = "phone"
 const val CHILD_USERNAME = "username"
 const val CHILD_FULLNAME = "fullname"
 const val CHILD_BIO = "bio"
+
 //const val CHILD_PHOTO_URL = "photoUrl"
 const val CHILD_STATE = "state"
 
@@ -67,10 +71,32 @@ inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline funct
 inline fun initUser(crossinline function: () -> Unit) {
     REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).addListenerForSingleValueEvent(
         AppValueEventListener {
-            USER = it.getValue(User::class.java) ?:User()
+            USER = it.getValue(User::class.java) ?: User()
             if (USER.username.isEmpty()) {
                 USER.username = CURRENT_UID
             }
             function()
         })
+}
+
+fun initContacts() {
+    if (checkPermission(READ_CONTACTS)) {
+        var arrayContacts = arrayListOf<CommonModel>()
+        val cursor = APP_ACTIVITY.contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            null,
+            null,
+            null)
+        cursor?.let {
+            while (it.moveToNext()) {
+                val fullName = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val phone = it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                val newModel = CommonModel()
+                newModel.fullname = fullName
+                newModel.phone = phone.replace(Regex("[\\s,-]"), "")
+                arrayContacts.add(newModel)
+            }
+        }
+        cursor?.close()
+    }
 }

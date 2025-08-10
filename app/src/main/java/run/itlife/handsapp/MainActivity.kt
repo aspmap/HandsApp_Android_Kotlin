@@ -5,6 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import run.itlife.handsapp.activities.RegisterActivity
 import run.itlife.handsapp.databinding.ActivityMainBinding
 import run.itlife.handsapp.ui.fragments.DialogsFragment
@@ -24,15 +28,11 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser {
-            initContacts()
+            CoroutineScope(Dispatchers.IO).launch {
+                initContacts()
+            }
             initFields()
             initFunc()
-        }
-    }
-
-    private fun initContacts() {
-        if (checkPermission(READ_CONTACTS)) {
-            showToast("Чтение контактов")
         }
     }
 
